@@ -4,8 +4,10 @@ from sqlalchemy.orm import validates
 
 from config import db
 
+
+
 class Users(db.Model,SerializerMixin):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
@@ -39,12 +41,13 @@ class Users(db.Model,SerializerMixin):
         return f'<Users {self.id}, {self.username}>'
 
 class Recipes(db.Model,SerializerMixin):
-    __tablename__ = "recipe"
+    __tablename__ = "recipes"
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable=False)
     category = db.Column(db.String, nullable=False)
     instructions = db.Column(db.String, nullable=False)
+    directions = db.Column(db.String, nullable = False)
 
     #__RELATIONSHIPS
     swipes = db.relationship("Swipes", back_populates="recipe")
@@ -62,8 +65,8 @@ class Swipes(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     swipe = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    recipe_id = db.Column(db.Integer, db.ForeignKey("recipe.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
     # ADD the DateTime function to pull current date and time to populate this column
     swipe_date = db.Column(db.Integer)
 
@@ -78,3 +81,5 @@ class Swipes(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f'<Swipes {self.id}, {self.swipe}, {self.user_id}, {self.recipe_id}>'
+    
+
