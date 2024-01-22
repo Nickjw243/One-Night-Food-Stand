@@ -1,6 +1,7 @@
 # One Night Food Stand
 
 ## Description:
+One Night Food Stand is a recipe finder app that is constructed like a dating app with swipes and matches.
 
 ## User Stories:
 User logs in -> 
