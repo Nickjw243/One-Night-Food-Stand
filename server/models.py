@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm import validates
 
 from config import db
 
@@ -14,6 +15,28 @@ class Users(db.Model,SerializerMixin):
     #__RELATIONSHIPS
     swipes = db.relationship("Swipes", back_populates="user")
 
+    #_SERIALIZATION
+    serialize_rules = ('-swipes.user', )
+
+    #_VALIDATIONS
+    @validates('username')
+    def validate_username(self, key, value):
+        if 0 < len(value) <= 25:
+            return value
+        else:
+            raise ValueError
+    
+    @validates('passwordhash')
+    def validate_passwordhash(self, key, value):
+        if 0 < len(value) <= 25:
+            return value
+        else:
+            raise ValueError
+    
+    #validation for @ (valid email) in user_email
+    
+    def __repr__(self):
+        return f'<Users {self.id}, {self.username}>'
 
 class Recipes(db.Model,SerializerMixin):
     __tablename__ = "recipe"
@@ -25,6 +48,14 @@ class Recipes(db.Model,SerializerMixin):
 
     #__RELATIONSHIPS
     swipes = db.relationship("Swipes", back_populates="recipe")
+
+    #_SERIALIZATION
+    serialize_rules = ('-swipes.recipe', )
+
+    #_VALIDATIONS
+
+    def __repr__(self):
+        return f'<Recipes {self.id}, {self.name}>'
 
 class Swipes(db.Model, SerializerMixin):
     __tablename__ = "swipes"
@@ -39,3 +70,11 @@ class Swipes(db.Model, SerializerMixin):
     #__RELATIONSHIPS
     user = db.relationship("Users", back_populates = "swipes")
     recipe = db.relationship("Recipes", back_populates = "swipes")
+
+    #_SERIALIZATIONS
+    serialize_rules = ('-user.swipes', '-recipe.swipes')
+
+    #_VALIDATIONS
+
+    def __repr__(self):
+        return f'<Swipes {self.id}, {self.swipe}, {self.user_id}, {self.recipe_id}>'
