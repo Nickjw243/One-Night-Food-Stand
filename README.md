@@ -26,6 +26,10 @@ UPDATES -> /swipes/:id -> PUT/PATCH -> Remove a match/unmatch from food
 DELETE -> /user -> DELETE -> Deletes a user
 
 ## Stretch Goals:
+Add pairing of sides with the food items.
+Add pairings of beverages with the food items.
+A user can add a new recipe.
+
 
 ## Trello:
 <img width="1232" alt="image" src="https://github.com/Nickjw243/One-Night-Food-Stand/assets/95344047/e3e176c0-27f4-41a9-82ce-1cc296315dea">
