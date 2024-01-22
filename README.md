@@ -11,6 +11,8 @@ If user does like the BBQ food item, they swipe right ->
 The user will be taken to the BBQ food item’s page which is has the recipe for how to make that item
 
 ## React Tree:
+![image](https://github.com/Nickjw243/One-Night-Food-Stand/assets/95344047/5ad50970-a9b4-4b91-b07b-dced079218da)
+
 
 ## Schema:
 <img width="757" alt="image" src="https://github.com/Nickjw243/One-Night-Food-Stand/assets/95344047/2d6f2249-8d8c-4fbd-974f-3e6823c67cb0">
