@@ -19,6 +19,11 @@ The user will be taken to the BBQ food item’s page which is has the recipe for
 
 
 ## API Routes:
+CREATE -> /swipes -> POST -> Captures match results
+READ -> /recipes/:id -> GET -> Gets the recipes for the associated food item
+READ -> /recipes/:id -> GET
+UPDATES -> /swipes/:id -> PUT/PATCH -> Remove a match/unmatch from food
+DELETE -> /user -> DELETE -> Deletes a user
 
 ## Stretch Goals:
 
