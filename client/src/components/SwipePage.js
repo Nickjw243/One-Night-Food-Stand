@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Matches from "./Matches"
+import Filters from "./Filters"
 
 function NewSwipe({ currentUser, onAddSwipe}) {
     const [body, setBody] = useState("");
@@ -23,3 +25,5 @@ function NewSwipe({ currentUser, onAddSwipe}) {
         })
     }
 }
+
+export default SwipePage;
