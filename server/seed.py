@@ -29,7 +29,7 @@ def create_recipes():
         r = Recipes(
             name = fake.name(),
             category = fake.name(),
-            instructions = fake.sentence(),
+            ingredients = fake.sentence(),
             directions = fake.sentence()
         )
         recipes.append(r)
