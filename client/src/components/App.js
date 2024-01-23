@@ -4,9 +4,9 @@ import SwipePage from "./SwipePage"
 
 function App() {
 
-  const url = ""
+  const url = "http://127.0.0.1:5555"
 
-  function submitLogIn({submit}) {
+
     const loginOutline = {
       email: "",
       password: "" 
@@ -20,32 +20,50 @@ function App() {
     }
     const handleSubmit = (e) => {
       e.preventDefault()
-      fetch(url){
-        method
-        //---------need to add a get request---------//
-        //---------for email + pw check against backend---------//
-      }
-    }
+
+      // if(form.email == 'Adam'){
+      //   console.log(`SUCCESS ** Email Match: ${form.email}`)
+      // } else {
+      //   console.log(`ERROR ** Email Error: ${form.email} does not exist`)
+      // }
+      fetch(url + '/users/' + form.email)
+      .then(response => response.json())
+      .then(user => {
+        if (user.user_email) {
+          if (user.passwordhash == form.password) {
+            console.log('you signed in')
+            setForm(loginOutline)
+          } else {
+            console.log('Wrong password')
+          }
+        } else {
+          console.log(`Email ${form.email} does not exist`)
+        }
+      })  
   }
+
 
   return (
   <div className="App">
-    <h1>Project Client</h1>;
-    <form>
+    <h1>One Night Food Stand</h1>
+    <form onSubmit={handleSubmit}>
+      <h2>Email</h2>
       <input 
         type="text"
         name="email"
         value={form.email}
         onChange={handleChange}>
       </input>
+      <h2>Password</h2>
       <input 
         type="text"
         name="password"
         value={form.password}
         onChange={handleChange}>
-        </input>
+      </input>
       <button className="login_button" type="submit">Log In</button>
     </form>
+    <button>Sign Up Here</button>
   </div>
   )
 }

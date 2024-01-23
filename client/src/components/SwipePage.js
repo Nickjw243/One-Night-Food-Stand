@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Matches from "./Matches"
 import Filters from "./Filters"
 
-function NewSwipe({ currentUser, onAddSwipe}) {
+function SwipePage({ currentUser, onAddSwipe}) {
     const [body, setBody] = useState("");
 
     function handleSubmit(e) {
