@@ -3,16 +3,7 @@ import Matches from "./Matches"
 import Filters from "./Filters"
 
 function SwipePage({ }) {
-    const [recipes, setRecipes] = useState([])
     const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0)
-
-    useEffect(() => {
-        //Fetch recipes from the server
-        fetch('/recipes')
-        .then((res) => res.json())
-        .then((data) => setRecipes(data))
-        .catch((error) => console.error('Error fetching recipes:', error))
-    }, [])
 
     function handleSwipeLeft() {
         setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
