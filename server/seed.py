@@ -50,10 +50,10 @@ def create_swipes(usernames, recipes):
 
 if __name__ == '__main__':
     with app.app_context():
-        # print("Clearing db...")
-        # Users.query.delete()
-        # Recipes.query.delete()
-        # Swipes.query.delete()
+        print("Clearing db...")
+        Users.query.delete()
+        Recipes.query.delete()
+        Swipes.query.delete()
 
         print("Seeding usernames...")
         usernames = create_username()
