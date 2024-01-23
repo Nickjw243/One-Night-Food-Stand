@@ -4,7 +4,6 @@ import SwipePage from "./SwipePage"
 import { Link } from "react-router-dom"
 
 function App() {
-  
 
   const url = "http://127.0.0.1:5555"
 
@@ -44,12 +43,9 @@ function App() {
       })  
   }
 
-
   return (
   <div className="App">
     <h1>One Night Food Stand</h1>
-    <form onSubmit={handleSubmit}>
-      <h2>Email</h2>
       <input 
         type="text"
         name="email"
@@ -68,6 +64,7 @@ function App() {
     <button>
       <Link className="link" to={`/signup`}>Sign Up Here</Link>
     </button>
+    <button>Sign Up Here</button>
   </div>
   )
 }

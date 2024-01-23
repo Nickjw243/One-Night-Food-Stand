@@ -25,6 +25,7 @@ def create_username():
 
 def create_recipes():
     recipes = []
+
     for _ in range(5):
         r = Recipes(
             name = fake.name(),
@@ -33,6 +34,98 @@ def create_recipes():
             directions = fake.sentence()
         )
         recipes.append(r)
+
+    recipe1 = Recipes(
+        name = 'Grilled Lemon-Pepper Chicken',
+        category = 'Barbecue',
+        ingredients = 'Chicken, lemon, pepper, olive oil',
+        directions = 'Marinate chicken with lemon, pepper, and olive oil. Grill until cooked, turning occasionally.',
+        image_url = 'https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/x17/18476-grilled-lemon-pepper-chicken-600x600.jpg?ext=.jpg'
+    )
+    recipes.append(recipe1)
+
+    recipe2 = Recipes(
+        name = 'Honey Glazed BBQ Ribs',
+        category = 'Barbecue',
+        ingredients = 'Pork ribs, honey, barbecue seasoning, garlic',
+        directions = 'Rub ribs with a mix of honey, barbecue seasoning, and garlic. Slow cook on the barbecue until tender.',
+        image_url = 'https://cdn.beeyondthehive.com/wp-content/uploads/2020/07/honeyribs1-1200x600.jpg'
+    )
+    recipes.append(recipe2)
+
+    recipe3 = Recipes(
+        name = 'Smoky Chipotle BBQ Pulled Pork',
+        category = 'Barbecue',
+        ingredients = 'Pork, chipotle seasoning, garlic, barbecue seasoning',
+        directions = 'Season pork with chipotle, garlic, and spices. Smoke on the barbecue until it pulls apart easily.',
+        image_url = 'https://overthefirecooking.com/wp-content/uploads/2022/06/A_IMG_3733-2-scaled.jpg'
+    )
+    recipes.append(recipe3)
+
+    recipe4 = Recipes(
+        name = 'Barbecue Shrimp Skewers',
+        category = 'Barbecue',
+        ingredients = 'Shrimp, barbecue sauce',
+        directions = 'Skewer shrimp and brush with barbecue sauce. Grill until shrimp are opaque and slightly charred.',
+        image_url = 'https://feelgoodfoodie.net/wp-content/uploads/2020/05/Grilled-Shrimp-Skewers-6.jpg'
+    )
+    recipes.append(recipe4)
+
+    recipe5 = Recipes(
+        name = 'Maple-Bourbon Glazed Chicken Wings',
+        category = 'Barbecue',
+        ingredients = 'Chicken wings, maple syrup, bourbon, barbecue seasoning',
+        directions = 'Toss chicken wings in a mix of maple syrup, bourbon, and spices. Grill until crispy and caramelized.',
+        image_url = 'https://www.simplyrecipes.com/thmb/jj7rNq0qgdxaAWQwOVZFH6P1m8g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2015__01__bourbon-maple-glazed-chicken-wings-vertical-a-1800-c6a4710dfd9c41bf8f92104129dacd80.jpg'
+    )
+    recipes.append(recipe5)
+
+    recipe6 = Recipes(
+        name = 'Teriyaki Pineapple BBQ Salmon',
+        category = 'Barbecue',
+        ingredients = 'Salmon, teriyaki sauce, pineapple',
+        directions = 'Marinate salmon in teriyaki sauce, top with pineapple slices, and grill until fish flakes easily.',
+        image_url = 'https://i0.wp.com/www.themountainkitchen.com/wp-content/uploads/2022/08/pineapple-plank-salmon.jpg'
+    )
+    recipes.append(recipe6)
+
+    recipe7 = Recipes(
+        name = 'Spicy Mango BBQ Chicken Skewers',
+        category = 'Barbecue',
+        ingredients = 'Chicken, spicy mango barbecue sauce',
+        directions = 'Thread chicken onto skewers, coat with spicy mango BBQ sauce, and grill until fully cooked.',
+        image_url = 'https://winealittlecookalot.com/wp-content/uploads/2020/08/mg_1862-1209x1920.jpg'
+    )
+    recipes.append(recipe7)
+
+    recipe8 = Recipes(
+        name = 'Mesquite-Smoked Brisket',
+        category = 'Barbecue',
+        ingredients = 'Beef brisket, mesquite seasoning',
+        directions = 'Rub brisket with mesquite seasoning, smoke low and slow until a flavorful crust forms.',
+        image_url = 'https://cdn11.bigcommerce.com/s-bsut34lcyq/images/stencil/2048x2048/products/7405/2689/Classic-Mesquite-Smoked-Brisket_C9A8523__49978.1692998540.jpg?c=2'
+    )
+    recipes.append(recipe8)
+
+    recipe9 = Recipes(
+        name = 'Garlic Herb Grilled Corn',
+        category = 'Barbecue',
+        ingredients = 'Corn, garlic, herbs, butter',
+        directions = 'Rub corn with garlic, herbs, and butter. Grill until kernels are tender and slightly charred.',
+        image_url = 'https://3.bp.blogspot.com/-HawhR7ebQx0/UDzxutJ7kDI/AAAAAAAAEhs/qRVICXCkbng/s400/IMG_3981.jpg'
+    )
+    recipes.append(recipe9)
+
+    recipe10 = Recipes(
+        name = 'Barbecue Veggie Kabobs',
+        category = 'Barbecue',
+        ingredients = 'Mixed vegetables, barbecue sauce',
+        directions = 'Skewer a variety of veggies, brush with barbecue sauce, and grill until vegetables are tender.',
+        image_url = 'https://www.acouplecooks.com/wp-content/uploads/2021/06/Vegetable-Kabobs-006.jpg'
+    )
+    recipes.append(recipe10)
+
+
     return recipes
 
 def create_swipes(usernames, recipes):
