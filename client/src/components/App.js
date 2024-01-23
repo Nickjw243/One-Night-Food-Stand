@@ -42,7 +42,6 @@ function App() {
       })  
   }
 
-
   return (
   <div className="App">
     <h1>One Night Food Stand</h1>
