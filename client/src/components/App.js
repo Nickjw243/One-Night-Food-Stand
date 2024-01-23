@@ -1,13 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import SwipePage from "./SwipePage"
 
 function App() {
-  useEffect(() => {
-    fetch("/swipes")
-    .then((r) => r.json())
-    .then((swipes) => console.log(swipes));
-  }, [])
-  return <h1>Project Client</h1>;
+
+  const url = ""
+
+  function submitLogIn({submit}) {
+    const loginOutline = {
+      email: "",
+      password: "" 
+    }
+    const [form, setForm] = useState(loginOutline)
+    const handleChange = (e) => {
+      setForm({
+        ...form,
+        [e.target.name]: e.target.value
+      })
+    }
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      fetch(url){
+        method
+        //---------need to add a get request---------//
+        //---------for email + pw check against backend---------//
+      }
+    }
+  }
+
+  return (
+  <div className="App">
+    <h1>Project Client</h1>;
+    <form>
+      <input 
+        type="text"
+        name="email"
+        value={form.email}
+        onChange={handleChange}>
+      </input>
+      <input 
+        type="text"
+        name="password"
+        value={form.password}
+        onChange={handleChange}>
+        </input>
+      <button className="login_button" type="submit">Log In</button>
+    </form>
+  </div>
+  )
 }
 
 export default App;
