@@ -26,15 +26,6 @@ def create_username():
 def create_recipes():
     recipes = []
 
-    for _ in range(5):
-        r = Recipes(
-            name = fake.name(),
-            category = fake.name(),
-            ingredients = fake.sentence(),
-            directions = fake.sentence()
-        )
-        recipes.append(r)
-
     recipe1 = Recipes(
         name = 'Grilled Lemon-Pepper Chicken',
         category = 'Barbecue',

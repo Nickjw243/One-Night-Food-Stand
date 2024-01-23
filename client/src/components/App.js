@@ -65,7 +65,6 @@ function App() {
       <button>
         <Link className="link" to={`/signup`}>Sign Up Here</Link>
       </button>
-      <button>Sign Up Here</button>
     </div>
   )
 }
