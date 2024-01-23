@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import Matches from "./Matches"
 import Filters from "./Filters"
 
-function SwipePage({ }) {
-    const [swipes, setSwipes] = useState([])
+function SwipePage({ currentUser, onAddSwipe}) {
+    const [swipes, setSwipes] = useState("");
 
     useEffect(() => {
         fetch('/swipes')
         .then(r => r.json())
         .then(data => setSwipes(data))
     }, [])
-    // const [body, setBody] = useState("");
-
     // function handleSubmit(e) {
     //     e.preventDefault()
 

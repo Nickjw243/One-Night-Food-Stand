@@ -90,16 +90,43 @@ def swipe_by_id(id):
     
     return response
 
-@app.route('/users/<int:id>', methods = ['DELETE'])
+@app.route('/users/<int:id>', methods = ['GET','DELETE'])
 def users(id):
     user = Users.query.filter(Users.id == id).first()
-    db.session.delete(user)
-    db.session.commit()
 
-    res = make_response(
-        {},
-        201
-    )
+    if request.method == 'GET':
+        user_body = user.to_dict(rules=('-swipes','-username','-id',))
+
+        res = make_response(
+            user_body,
+            200
+        )
+    elif request.method == 'DELETE':
+        db.session.delete(user)
+        db.session.commit()
+
+        res = make_response(
+            {},
+            201
+        )
+    return res
+
+##-------------This is for the login functionality-----##(app.js)
+@app.route('/users/<string:user_email>', methods = ['GET'])
+def users_by_email(user_email):
+    try:
+        user = Users.query.filter(Users.user_email == user_email).first()
+        user_body = user.to_dict(rules=('-swipes','-username','-id',))
+
+        res = make_response(
+            user_body,
+            200
+        )
+    except:
+        res = make_response(
+            {"error": "account does not exist"},
+            404
+        )
     return res
 
 if __name__ == '__main__':

@@ -17,8 +17,8 @@ def create_username():
     for _ in range(5):
         u = Users(
             username = fake.name(),
-            user_email = fake.name(),
-            passwordhash = fake.name()
+            user_email = fake.first_name(),
+            passwordhash = fake.first_name()
         )
         usernames.append(u)
     return usernames
