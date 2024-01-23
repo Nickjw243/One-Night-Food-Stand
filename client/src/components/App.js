@@ -46,8 +46,7 @@ function App() {
   return (
   <div className="App">
     <h1>One Night Food Stand</h1>
-    <form onSubmit={handleSubmit}>
-      <h2>Email</h2>
+    {/* <form>
       <input 
         type="text"
         name="email"
