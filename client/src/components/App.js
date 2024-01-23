@@ -44,8 +44,9 @@ function App() {
   }
 
   return (
-  <div className="App">
-    <h1>One Night Food Stand</h1>
+    <div className="App">
+      <h1>One Night Food Stand</h1>
+      <form onSubmit={handleSubmit}>
       <input 
         type="text"
         name="email"
@@ -60,12 +61,12 @@ function App() {
         onChange={handleChange}>
       </input>
       <button className="login_button" type="submit">Log In</button>
-    </form>
-    <button>
-      <Link className="link" to={`/signup`}>Sign Up Here</Link>
-    </button>
-    <button>Sign Up Here</button>
-  </div>
+      </form>
+      <button>
+        <Link className="link" to={`/signup`}>Sign Up Here</Link>
+      </button>
+      <button>Sign Up Here</button>
+    </div>
   )
 }
 
