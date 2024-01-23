@@ -1,6 +1,6 @@
 import App from "./components/App"
 import Filters from "./components/Filters"
-import LoginForm from "./components/LoginForm"
+import SignUp from "./components/SignUp"
 import Matches from "./components/Matches"
 import Recipes from "./components/Recipes"
 import SwipePage from "./components/SwipePage"
@@ -9,7 +9,11 @@ import SwipePage from "./components/SwipePage"
 const routes = [
     {
         path: "/",
-        element: <LoginForm />
+        element: <App />
+    },
+    {
+        path: "/signup",
+        element: <SignUp />
     },
     {
         path: "/swipes",

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Matches from "./Matches"
-import Filters from "./Filters"
+// import Matches from "./Matches"
+// import Filters from "./Filters"
+import Recipes from "./Recipes";
 
 function SwipePage({ currentUser, onAddSwipe}) {
     const [swipes, setSwipes] = useState("");
@@ -32,9 +33,11 @@ function SwipePage({ currentUser, onAddSwipe}) {
 
     return (
         <div className='Swipe-Page'>
+            <header>
+
+            </header>
             <h1>Swipes</h1>
-            <Filters />
-            <Matches />
+            <Recipes />
         </div>
     )
 }

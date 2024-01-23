@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Link } from "react-router-dom"
 
-function LoginForm() {
+function SignUp() {
     const [users, setUsers] = useState([{}]);
     const [refreshPage, setRefreshPage] = useState(false);
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -20,7 +21,11 @@ function LoginForm() {
 
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter email"),
-        name: yup.string().required("Must enter a name").max(15)
+        name: yup.string().required("Must enter a name").max(15),
+        password: yup
+            .string()
+            .required("Must enter password")
+            .max(5)
     });
 
     const formik = useFormik({
@@ -67,14 +72,22 @@ function LoginForm() {
             />
             <p style={{ color: "red" }}> {formik.errors.name}</p>
 
-            <button type="submit">Submit</button>
+            <label htmlFor="password">Password</label>
+            <br />
+
+            <input
+            id="password"
+            name="password"
+            onChange={formik.handleChange}
+            value={formik.values.age}
+            />
+            <p style={{ color: "red" }}> {formik.errors.password}</p>
+            <button type="submit">
+                <Link className="link-to-swipe-page" to={`/swipes`}>Submit</Link>
+            </button>
         </form>
         <table style={{ padding: "15px" }}>
             <tbody>
-            <tr>
-                <th>name</th>
-                <th>email</th>
-            </tr>
             {users === "undefined" ? (
                 <p>Loading</p>
             ) : (
@@ -83,6 +96,7 @@ function LoginForm() {
                     <tr key={i}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
+                    <td>{user.password}</td>
                     </tr>
                 </>
                 ))
@@ -93,4 +107,4 @@ function LoginForm() {
     );
 };
 
-export default LoginForm
+export default SignUp
