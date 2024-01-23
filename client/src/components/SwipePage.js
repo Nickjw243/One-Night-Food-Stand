@@ -44,12 +44,6 @@ function SwipePage() {
     // }
 
     return (
-        <div className='Swipe-Page'>
-            <header>
-
-            </header>
-            <h1>Swipes</h1>
-            <Recipes />
         <div>
             <h2>Swipe Recipes</h2>
             {recipes && recipes.length > 0 ? (
