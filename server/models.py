@@ -48,6 +48,7 @@ class Recipes(db.Model,SerializerMixin):
     category = db.Column(db.String, nullable=False)
     instructions = db.Column(db.String, nullable=False)
     directions = db.Column(db.String, nullable = False)
+    image_url = db.Column(db.Text, nullable = False)
 
     #__RELATIONSHIPS
     swipes = db.relationship("Swipes", back_populates="recipe")
