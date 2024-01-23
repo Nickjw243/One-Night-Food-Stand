@@ -32,7 +32,7 @@ function SwipePage({ currentUser, onAddSwipe}) {
 
     return (
         <div className='Swipe-Page'>
-            <h1>Swipes</h1>
+            <h1>One Night Food Stand</h1>
             <Filters />
             <Matches />
         </div>
