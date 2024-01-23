@@ -25,15 +25,20 @@ def create_username():
 
 def create_recipes():
     recipes = []
-    for _ in range(5):
-        r = Recipes(
-            name = fake.name(),
-            category = fake.name(),
-            instructions = fake.sentence(),
-            directions = fake.sentence()
-        )
-        recipes.append(r)
-    return recipes
+    recipe1 = Recipes(
+        name = 'Grilled Lemon-Pepper Chicken',
+        category = 'Barbecue',
+        instructions = 'Chicken, lemon, pepper, olive oil',
+        directions = 'Marinate chicken with lemon, pepper, and olive oil. Grill until cooked, turning occasionally.',
+        image_url = 'https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/x17/18476-grilled-lemon-pepper-chicken-600x600.jpg?ext=.jpg'
+    )
+    recipes.append(recipe1)
+
+    recipe2 = Recipes(
+        name = 'Honey Glazed BBQ Ribs',
+        category = 'Barbecue',
+        instructions = ''
+    )
 
 def create_swipes(usernames, recipes):
     swipes = []

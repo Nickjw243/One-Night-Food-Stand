@@ -46,7 +46,7 @@ class Recipes(db.Model,SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable=False)
     category = db.Column(db.String, nullable=False)
-    instructions = db.Column(db.String, nullable=False)
+    ingredients = db.Column(db.String, nullable=False)
     directions = db.Column(db.String, nullable = False)
     image_url = db.Column(db.Text, nullable = False)
 
