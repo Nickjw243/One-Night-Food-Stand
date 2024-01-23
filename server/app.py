@@ -18,21 +18,29 @@ from models import db, Users, Recipes, Swipes
 def index():
     return '<h1>Project Server</h1>'
 
-@app.route('/swipes', methods = ['POST'])
+@app.route('/swipes', methods = ['GET', 'POST'])
 def swipes():
-    form_data = request.get_json()
-    new_swipes = Swipes(
-        swipe = form_data['swipe'],
-        user_id = form_data['user_id'],
-        recipe_id = form_data['recipe_id'],
-        swipe_date = form_data['swipe_date']
-    )
-    db.session.add(new_swipes)
-    db.session.commit()
-    response = make_response(
-        new_swipes.to_dict(),
-        201
-    )
+    if request.method == "GET":
+        swipes = Swipes.query.all()
+        swipes_dict = [swipe.to_dict(rules = ('-recipe', '-user')) for swipe in swipes]
+        response = make_response(
+            swipes_dict,
+            200
+        )
+    elif request.method == 'POST':
+        form_data = request.get_json()
+        new_swipes = Swipes(
+            swipe = form_data['swipe'],
+            user_id = form_data['user_id'],
+            recipe_id = form_data['recipe_id'],
+            swipe_date = form_data['swipe_date']
+        )
+        db.session.add(new_swipes)
+        db.session.commit()
+        response = make_response(
+            new_swipes.to_dict(),
+            201
+        )
     return response
 
 
