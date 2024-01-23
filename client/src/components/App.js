@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import SwipePage from "./SwipePage"
+import { Link } from "react-router-dom"
 
 function App() {
 
@@ -45,7 +46,6 @@ function App() {
   return (
   <div className="App">
     <h1>One Night Food Stand</h1>
-    <form>
       <input 
         type="text"
         name="email"
@@ -61,6 +61,9 @@ function App() {
       </input>
       <button className="login_button" type="submit">Log In</button>
     </form>
+    <button>
+      <Link className="link" to={`/signup`}>Sign Up Here</Link>
+    </button>
     <button>Sign Up Here</button>
   </div>
   )

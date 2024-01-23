@@ -142,6 +142,35 @@ def users_by_email(user_email):
         )
     return res
 
+# @app.route('/users', methods = ['GET', 'POST'])
+# def users():
+#     if request.method == 'GET':
+#         users = Users.query.all()
+#         users_dict = [user.to_dict() for user in users]
+#         response = make_response(
+#             users_dict,
+#             200
+#         )
+#     elif request.method == 'POST':
+#         try:
+#             form_data = request.get_json()
+#             new_user = Users(
+#                 username = form_data['username'],
+#                 user_email = form_data['user_email'],
+#                 passwordhash = form_data['passwordhash']
+#             )
+#             db.session.add(new_user)
+#             db.session.commit()
+#             response = make_response(
+#                 new_user.to_dict(),
+#                 201
+#             )
+#         except ValueError:
+#             response = make_response(
+#                 {'Error': 'Validation error'}
+#             )
+#     return response
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
 

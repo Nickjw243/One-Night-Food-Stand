@@ -25,6 +25,16 @@ def create_username():
 
 def create_recipes():
     recipes = []
+
+    for _ in range(5):
+        r = Recipes(
+            name = fake.name(),
+            category = fake.name(),
+            ingredients = fake.sentence(),
+            directions = fake.sentence()
+        )
+        recipes.append(r)
+
     recipe1 = Recipes(
         name = 'Grilled Lemon-Pepper Chicken',
         category = 'Barbecue',
@@ -114,6 +124,7 @@ def create_recipes():
         image_url = 'https://www.acouplecooks.com/wp-content/uploads/2021/06/Vegetable-Kabobs-006.jpg'
     )
     recipes.append(recipe10)
+
 
     return recipes
 
