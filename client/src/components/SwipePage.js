@@ -2,28 +2,43 @@ import React, { useEffect, useState } from "react";
 import Matches from "./Matches"
 import Filters from "./Filters"
 
-function NewSwipe({ currentUser, onAddSwipe}) {
-    const [body, setBody] = useState("");
+function SwipePage({ }) {
+    const [swipes, setSwipes] = useState([])
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    useEffect(() => {
+        fetch('/swipes')
+        .then(r => r.json())
+        .then(data => setSwipes(data))
+    }, [])
+    // const [body, setBody] = useState("");
 
-        fetch("/swipes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: currentUser.username,
-                body: body,
-            }),
-        })
-        .then((r) => r.json())
-        .then((newSwipe) => {
-            onAddSwipe(newSwipe);
-            setBody("");
-        })
-    }
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+
+    //     fetch("/swipes", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             username: currentUser.username,
+    //             body: body,
+    //         }),
+    //     })
+    //     .then((r) => r.json())
+    //     .then((newSwipe) => {
+    //         onAddSwipe(newSwipe);
+    //         setBody("");
+    //     })
+    // }
+
+    return (
+        <div className='Swipe-Page'>
+            <h1>Swipes</h1>
+            <Filters />
+            <Matches />
+        </div>
+    )
 }
 
 export default SwipePage;

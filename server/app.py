@@ -49,7 +49,7 @@ def recipe_by_id(id):
 
     if recipe:
         response = make_response(
-            recipe.to_dict(),
+            recipe.to_dict(rules = ('-swipes', )),
             200
         )
     else:
