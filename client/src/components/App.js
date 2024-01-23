@@ -3,6 +3,18 @@ import { Switch, Route } from "react-router-dom";
 import SwipePage from "./SwipePage"
 
 function App() {
+  const [recipes, setRecipes] = useState([])
+
+  useEffect(() => {
+    console.log("Fetching recipes...");
+    fetch("/recipes")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Recipes fetched:", data);
+        setRecipes(data);
+      })
+      .catch((error) => console.error("Error fetching recipes:", error));
+  }, []);
   
 
   // const url = ""
@@ -32,6 +44,7 @@ function App() {
   return (
   <div className="App">
     <h1>One Night Food Stand</h1>
+    <SwipePage recipes = {recipes} />
     {/* <form>
       <input 
         type="text"
