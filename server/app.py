@@ -60,6 +60,19 @@ def recipe_by_id(id):
     
     return response
 
+@app.route('/recipes', methods = ['GET'])
+def recipes():
+    recipes = Recipes.query.all()
+
+    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
+
 @app.route('/swipes/<int:id>', methods = ['PATCH'])
 def swipe_by_id(id):
     swipe = Swipes.query.filter(Swipes.id == id).first()

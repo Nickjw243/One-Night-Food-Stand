@@ -113,6 +113,9 @@ def create_recipes():
         directions = 'Skewer a variety of veggies, brush with barbecue sauce, and grill until vegetables are tender.',
         image_url = 'https://www.acouplecooks.com/wp-content/uploads/2021/06/Vegetable-Kabobs-006.jpg'
     )
+    recipes.append(recipe10)
+
+    return recipes
 
 def create_swipes(usernames, recipes):
     swipes = []
