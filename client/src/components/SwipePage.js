@@ -21,7 +21,7 @@ function SwipePage() {
     function handleSwipeRight() {
         setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
     }
-  
+
     // function handleSubmit(e) {
     //     e.preventDefault()
 
