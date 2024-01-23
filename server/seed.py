@@ -84,8 +84,6 @@ if __name__ == '__main__':
         # Swipes.query.delete()
         # # Seed code goes here!
 
-        # print("Start seeding...")
-
         # print("Create Username...")
         # name1 = Users(username = "Input username")
 

@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-from models import Users, Recipes, Swipes
+from models import db, Users, Recipes, Swipes
 
 
 # Views go here!
@@ -17,6 +17,31 @@ from models import Users, Recipes, Swipes
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'
+
+@app.route('/swipes', methods = ['GET', 'POST'])
+def swipes():
+    if request.method == "GET":
+        swipes = Swipes.query.all()
+        swipes_dict = [swipe.to_dict(rules = ('-recipe', '-user')) for swipe in swipes]
+        response = make_response(
+            swipes_dict,
+            200
+        )
+    elif request.method == 'POST':
+        form_data = request.get_json()
+        new_swipes = Swipes(
+            swipe = form_data['swipe'],
+            user_id = form_data['user_id'],
+            recipe_id = form_data['recipe_id'],
+            swipe_date = form_data['swipe_date']
+        )
+        db.session.add(new_swipes)
+        db.session.commit()
+        response = make_response(
+            new_swipes.to_dict(),
+            201
+        )
+    return response
 
 @app.route('/recipes/<int:id>', methods = ['GET'])
 def recipe_by_id(id):
