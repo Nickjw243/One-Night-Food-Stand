@@ -64,7 +64,7 @@ def recipe_by_id(id):
 def recipes():
     recipes = Recipes.query.all()
 
-    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+    recipes_dict = [recipe.to_dict(rules = ('occasion', 'weather', 'protein', 'difficulty', '-swipes')) for recipe in recipes]
 
     response = make_response(
         recipes_dict,
