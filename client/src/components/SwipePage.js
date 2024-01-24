@@ -7,6 +7,7 @@ import App from "./App"
 import { useLocation } from "react-router-dom";
 import Filters from "./Filters";
 
+
 function SwipePage({loggedIn}) {
     console.log(loggedIn)
     let location = useLocation()
@@ -17,6 +18,7 @@ function SwipePage({loggedIn}) {
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
+  const curr_date = 40
 
   useEffect(() => {
     // Fetch recipes from the server
@@ -27,6 +29,29 @@ function SwipePage({loggedIn}) {
 }, []);
 
   const isLoading = !Array.isArray(recipes) || recipes.length === 0;
+
+  function handleSwipeLeft(e) {
+    e.preventDefault()
+
+    //post for the dislike
+    fetch('/swipes',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      swipe: 'swiping',
+      user_id: userID,
+      recipe_id: 1,
+      swipe_date: curr_date
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
+  })
+  }
 
   return (
     <div>
@@ -44,7 +69,7 @@ function SwipePage({loggedIn}) {
             <h3>{recipes[currentRecipeIndex]?.name || ''}</h3>
           </div>
           <div>
-            <button onClick={() => setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)}>
+            <button onClick={handleSwipeLeft}>
               Swipe Left
             </button>
             <button onClick={() => setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)}>
