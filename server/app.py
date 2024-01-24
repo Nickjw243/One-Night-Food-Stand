@@ -5,6 +5,7 @@
 # Remote library imports
 from flask import Flask, make_response, request
 from flask_restful import Resource
+from flask_cors import cross_origin
 
 # Local imports
 from config import app, db, api
@@ -140,16 +141,32 @@ def users(id):
     return res
 
 ##-------------This is for the login functionality-----##(app.js)
-@app.route('/users/<string:user_email>', methods = ['GET'])
-def users_by_email(user_email):
+@app.route('/login', methods = ['POST'])
+def users_by_email():
     try:
-        user = Users.query.filter(Users.user_email == user_email).first()
-        user_body = user.to_dict(rules=('-swipes','-username','-id',))
+        form_data = request.get_json()
+        email = form_data['email']
+        password = form_data['password']
+        user = Users.query.filter(Users.user_email == email).first()
 
-        res = make_response(
-            user_body,
-            200
-        )
+        if user:
+            if password == user.passwordhash:
+                # login_body = user.to_dict(rules=('-swipes','-username','-passwordhash',))
+                login_body = user.to_dict(only=('id',))
+                res = make_response(
+                    login_body,
+                    200
+                )
+            else:
+                res = make_response(
+                    {"error": "wrong password"},
+                    401
+                )
+        else:
+            res = make_response(
+                {"error": "account does not exist"},
+                404
+            )
     except:
         res = make_response(
             {"error": "account does not exist"},

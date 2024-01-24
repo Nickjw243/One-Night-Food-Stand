@@ -9,41 +9,49 @@ import { Link } from "react-router-dom"
 function App() {
 
   const url = "http://127.0.0.1:5555"
+  const navigate = useNavigate()
 
+  const loginOutline = {
+    email: "",
+    password: "" 
+  }
+  const [form, setForm] = useState(loginOutline)
+  const [loggedIn, setLoggedIn] = useState(loginOutline.email)
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-    const loginOutline = {
-      email: "",
-      password: "" 
-    }
-    const [form, setForm] = useState(loginOutline)
-    const handleChange = (e) => {
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value
+    fetch(url + '/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.email,
+        password: form.password,
       })
-    }
-    const handleSubmit = (e) => {
-      e.preventDefault()
-
-      // if(form.email == 'Adam'){
-      //   console.log(`SUCCESS ** Email Match: ${form.email}`)
-      // } else {
-      //   console.log(`ERROR ** Email Error: ${form.email} does not exist`)
-      // }
-      fetch(url + '/users/' + form.email)
-      .then(response => response.json())
-      .then(user => {
-        if (user.user_email) {
-          if (user.passwordhash == form.password) {
-            console.log('you signed in')
-            setForm(loginOutline)
-          } else {
-            console.log('Wrong password')
-          }
+    })
+    .then(response => response.json())
+    .then(user => {
+      if (user.id) {
+        console.log('you signed in')
+        setForm(loginOutline)
+        setLoggedIn(user.id)
+        navSwipe(user.id)
         } else {
-          console.log(`Email ${form.email} does not exist`)
+          console.log('Login failed: ', user)
         }
-      })  
+    })
+  }
+  function navSwipe(id) {
+    // navigate("/swipes", {state: test})
+    navigate("/swipes", { state: { loggedIn: id } });
+    // window.history.push({loggedIn}, "/swipes", url)
   }
 
   return (
@@ -56,25 +64,27 @@ function App() {
       </Routes>
       <h1>One Night Food Stand</h1>
       <form onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        name="email"
-        value={form.email}
-        onChange={handleChange}>
-      </input>
-      <h2>Password</h2>
-      <input 
-        type="text"
-        name="password"
-        value={form.password}
-        onChange={handleChange}>
-      </input>
-      <button className="login_button" type="submit">Log In</button>
+        <input 
+          type="text"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required>
+        </input>
+        <input 
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="Password"
+          required>
+        </input>
+        <button className="login_button" type="submit">Log In</button>
       </form>
       <button>
         <Link className="link" to={`/signup`}>Sign Up Here</Link>
       </button>
-      <button>Sign Up Here</button>
     </div>
   )
 }

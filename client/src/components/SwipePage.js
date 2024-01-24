@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Recipes from "./Recipes";
+import App from "./App"
+import { useLocation } from "react-router-dom";
 import Filters from "./Filters";
 
-function SwipePage() {
+function SwipePage({loggedIn}) {
+    console.log(loggedIn)
+    let location = useLocation()
+    let userID = location.state.loggedIn
+
+    console.log(userID)
+
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [recipes, setRecipes] = useState([]);
   const navigate = useNavigate();
