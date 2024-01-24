@@ -40,7 +40,30 @@ function SwipePage({loggedIn}) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      swipe: 'swiping',
+      swipe: 'swiping left',
+      user_id: userID,
+      recipe_id: 1,
+      swipe_date: curr_date
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
+  })
+  }
+
+  function handleSwipeRight(e) {
+    e.preventDefault()
+
+    //post for the dislike
+    fetch('/swipes',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      swipe: 'swiping right',
       user_id: userID,
       recipe_id: 1,
       swipe_date: curr_date
@@ -72,7 +95,7 @@ function SwipePage({loggedIn}) {
             <button onClick={handleSwipeLeft}>
               Swipe Left
             </button>
-            <button onClick={() => setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)}>
+            <button onClick={handleSwipeRight}>
               Swipe Right
             </button>
             <button onClick={() => navigate('/filters')}>
