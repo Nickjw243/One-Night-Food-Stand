@@ -39,7 +39,7 @@ def swipes():
         db.session.add(new_swipes)
         db.session.commit()
         response = make_response(
-            new_swipes.to_dict(),
+            new_swipes.to_dict(rules=('-recipe','-user',)),
             201
         )
     return response

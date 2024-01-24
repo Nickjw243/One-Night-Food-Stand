@@ -20,6 +20,14 @@ def create_username():
         passwordhash = 'just'
     )
     usernames.append(u)
+
+    uu = Users(
+    username = 'tim',
+    user_email = 'tim@form.net',
+    passwordhash = 'just'
+    )
+    usernames.append(uu)
+
     return usernames
 
 def create_recipes():
