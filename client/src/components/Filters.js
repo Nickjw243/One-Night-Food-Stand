@@ -6,24 +6,6 @@ function Filters() {
     const [selectedProtein, setSelectedProtein] = useState('')
     const [selectedDifficulty, setSelectedDifficulty] = useState('')
 
-    function handleFilterChange() {
-        const queryParams = new URLSearchParams({
-            occasion: selectedOccasion,
-            weather: selectedWeather,
-            protein: selectedProtein,
-            difficulty: selectedDifficulty,
-        })
-
-        fetch('/recipes?${queryParams.toString()}')
-        .then((response) => response.json())
-        .then((data) => {
-            setRecipes(data)
-        })
-        .catch((error) => {
-            console.error('Error fetching filtered recipes:', error)
-        })
-    }
-
     return (
         <div>
             <h2>Filters</h2>

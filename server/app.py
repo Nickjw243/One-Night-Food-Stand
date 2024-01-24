@@ -62,9 +62,12 @@ def recipe_by_id(id):
 
 @app.route('/recipes', methods = ['GET'])
 def recipes():
-    recipes = Recipes.query.all()
+    filters = request.args.to_dict()
 
-    recipes_dict = [recipe.to_dict(rules = ('occasion', 'weather', 'protein', 'difficulty', '-swipes')) for recipe in recipes]
+    #Apply filtering logic based on filters
+    filtered_recipes = Recipes.query.filter_by(**filters).all()
+
+    recipes_dict = [recipe.to_dict(rules = ('occasion', 'weather', 'protein', 'difficulty', '-swipes')) for recipe in filtered_recipes]
 
     response = make_response(
         recipes_dict,
