@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Filters() {
+    const [selectedOccasion, setSelectedOccasion] = useState('')
+    const [selectedWeather, setSelectedWeather] = useState('')
+    const [selectedProtein, setSelectedProtein] = useState('')
+    const [selectedDifficulty, setSelectedDifficulty] = useState('')
+
+    function handleFilterChange() {
+        const queryParams = new URLSearchParams({
+            occasion: selectedOccasion,
+            weather: selectedWeather,
+            protein: selectedProtein,
+            difficulty: selectedDifficulty,
+        })
+
+        fetch('/recipes?${queryParams.toString()}')
+        .then((response) => response.json())
+        .then((data) => {
+            setRecipes(data)
+        })
+        .catch((error) => {
+            console.error('Error fetching filtered recipes:', error)
+        })
+    }
+
     return (
         <div>
             <h2>Filters</h2>
             <label>
                 Occasion:
-                <select>
+                <select
+                    value = {selectedOccasion}
+                    onChange={(e) => setSelectedOccasion(e.target.value)}>
                     <option value = 'Backyard BBQ'>Backyard BBQ</option>
                     <option value = 'Casual Hang'>Casual Hang</option>
                     <option value = 'Wedding'>Wedding</option>
@@ -19,7 +44,9 @@ function Filters() {
             </label>
             <label>
                 Weather:
-                <select>
+                <select
+                    value = {selectedWeather}
+                    onChange={(e) => setSelectedWeather(e.target.value)}>
                     <option value = 'Sunny'>Sunny</option>
                     <option value = 'Snowy'>Snowy</option>
                     <option value = 'Rainy'>Rainy</option>
@@ -30,7 +57,9 @@ function Filters() {
             </label>
             <label>
                 Protein:
-                <select>
+                <select
+                    value = {selectedProtein}
+                    onChange={(e) => setSelectedProtein(e.target.value)}>
                     <option value = 'Chicken'>Chicken</option>
                     <option value = 'Pork'>Pork</option>
                     <option value = 'Beef'>Beef</option>
@@ -42,12 +71,15 @@ function Filters() {
             </label>
             <label>
                 Difficulty:
-                <select>
+                <select
+                    value = {selectedDifficulty}
+                    onChange={(e) => setSelectedDifficulty(e.target.value)}>
                     <option value = 'Easy'>Easy</option>
                     <option value = 'Medium'>Medium</option>
                     <option value = 'Hard'>Hard</option>
                 </select>
             </label>
+            <button onClick={handleFilterChange}>Apply Filters</button>
         </div>
     )
 }
