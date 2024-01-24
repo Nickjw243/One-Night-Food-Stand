@@ -1,13 +1,20 @@
 import React from "react";
 import Recipes from "./Recipes"
+import NavBar from "./NavBar";
 
-function Matches({}) {
+function Matches() {
 
 
     return (
-        <ul className="matches" >
-            <Recipes />
-        </ul>
+        <div>
+            <header>
+                <NavBar />
+            </header>
+            <h1>Matches</h1>
+            <ul className="matches" >
+                <Recipes />
+            </ul>
+        </div>
     )
 }
 

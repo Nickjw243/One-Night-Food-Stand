@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Recipes from "./Recipes";
+// import Recipes from "./Recipes";
+import NavBar from './NavBar'
+import Matches from "./Matches";
 import App from "./App"
 import { useLocation } from "react-router-dom";
 import Filters from "./Filters";

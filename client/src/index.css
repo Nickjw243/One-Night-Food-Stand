@@ -5,3 +5,17 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.nav-link {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 60px;
+  padding: 5px;
+  margin: 0 10px 6px;
+  background: blue;
+  text-decoration: none;
+  text-align: center;
+  font-size: min(10vw, 15px);
+  color: white;
+  margin-top: 10px;
+  margin-bottom: -50px;
+}
