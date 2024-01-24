@@ -170,10 +170,9 @@ def create_swipes(usernames, recipes):
     swipes = []
     for _ in range(5):
         s = Swipes(
-            swipe = fake.text(),
+            swipe = randint(0,1),
             user_id = rc([username.id for username in usernames]),
-            recipe_id = rc([recipe.id for recipe in recipes]),
-            swipe_date = fake.date_time()
+            recipe_id = rc([recipe.id for recipe in recipes])
         )
         swipes.append(s)
     return swipes

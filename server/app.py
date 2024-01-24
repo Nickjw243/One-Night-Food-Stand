@@ -33,8 +33,7 @@ def swipes():
         new_swipes = Swipes(
             swipe = form_data['swipe'],
             user_id = form_data['user_id'],
-            recipe_id = form_data['recipe_id'],
-            swipe_date = form_data['swipe_date']
+            recipe_id = form_data['recipe_id']
         )
         db.session.add(new_swipes)
         db.session.commit()

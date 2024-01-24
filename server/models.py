@@ -71,11 +71,10 @@ class Swipes(db.Model, SerializerMixin):
     __tablename__ = "swipes"
 
     id = db.Column(db.Integer, primary_key=True)
-    swipe = db.Column(db.String, nullable=False)
+    swipe = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"))
     # ADD the DateTime function to pull current date and time to populate this column
-    swipe_date = db.Column(db.Integer)
 
     #__RELATIONSHIPS
     user = db.relationship("Users", back_populates = "swipes")

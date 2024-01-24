@@ -1,8 +1,8 @@
-"""empty message
+"""removed date column from swipes
 
-Revision ID: 446621fb4cc1
+Revision ID: 3bd0031c0f7b
 Revises: 
-Create Date: 2024-01-24 14:40:55.687686
+Create Date: 2024-01-24 15:46:59.814869
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '446621fb4cc1'
+revision = '3bd0031c0f7b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,10 +40,9 @@ def upgrade():
     )
     op.create_table('swipes',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('swipe', sa.String(), nullable=False),
+    sa.Column('swipe', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('recipe_id', sa.Integer(), nullable=True),
-    sa.Column('swipe_date', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['recipe_id'], ['recipes.id'], name=op.f('fk_swipes_recipe_id_recipes')),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_swipes_user_id_users')),
     sa.PrimaryKeyConstraint('id')
