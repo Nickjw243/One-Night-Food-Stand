@@ -31,7 +31,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Chicken, lemon, pepper, olive oil',
         directions = 'Marinate chicken with lemon, pepper, and olive oil. Grill until cooked, turning occasionally.',
-        image_url = 'https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/x17/18476-grilled-lemon-pepper-chicken-600x600.jpg?ext=.jpg'
+        image_url = 'https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipes/retail/x17/18476-grilled-lemon-pepper-chicken-600x600.jpg?ext=.jpg',
+        occasion = 'Backyard BBQ',
+        weather = 'Sunny',
+        protein = 'Chicken',
+        difficulty = 'Easy'
     )
     recipes.append(recipe1)
 
@@ -41,6 +45,10 @@ def create_recipes():
         ingredients = 'Pork ribs, honey, barbecue seasoning, garlic',
         directions = 'Rub ribs with a mix of honey, barbecue seasoning, and garlic. Slow cook on the barbecue until tender.',
         image_url = 'https://cdn.beeyondthehive.com/wp-content/uploads/2020/07/honeyribs1-1200x600.jpg'
+        occasion = 'Casual Hang',
+        weather = 'Snowy',
+        protein = 'Pork',
+        difficulty = 'Hard'
     )
     recipes.append(recipe2)
 
@@ -50,6 +58,10 @@ def create_recipes():
         ingredients = 'Pork, chipotle seasoning, garlic, barbecue seasoning',
         directions = 'Season pork with chipotle, garlic, and spices. Smoke on the barbecue until it pulls apart easily.',
         image_url = 'https://overthefirecooking.com/wp-content/uploads/2022/06/A_IMG_3733-2-scaled.jpg'
+        occasion = 'Family Reunion',
+        weather = 'Hot',
+        protein = 'Pork',
+        difficulty = 'Hard'
     )
     recipes.append(recipe3)
 
@@ -59,6 +71,10 @@ def create_recipes():
         ingredients = 'Shrimp, barbecue sauce',
         directions = 'Skewer shrimp and brush with barbecue sauce. Grill until shrimp are opaque and slightly charred.',
         image_url = 'https://feelgoodfoodie.net/wp-content/uploads/2020/05/Grilled-Shrimp-Skewers-6.jpg'
+        occasion = 'Holiday',
+        weather = 'Hot',
+        protein = 'Shrimp',
+        difficulty = 'Easy'
     )
     recipes.append(recipe4)
 
@@ -67,7 +83,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Chicken wings, maple syrup, bourbon, barbecue seasoning',
         directions = 'Toss chicken wings in a mix of maple syrup, bourbon, and spices. Grill until crispy and caramelized.',
-        image_url = 'https://www.simplyrecipes.com/thmb/jj7rNq0qgdxaAWQwOVZFH6P1m8g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2015__01__bourbon-maple-glazed-chicken-wings-vertical-a-1800-c6a4710dfd9c41bf8f92104129dacd80.jpg'
+        image_url = 'https://www.simplyrecipes.com/thmb/jj7rNq0qgdxaAWQwOVZFH6P1m8g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2015__01__bourbon-maple-glazed-chicken-wings-vertical-a-1800-c6a4710dfd9c41bf8f92104129dacd80.jpg',
+        occasion = 'Friend Gathering',
+        weather = 'Windy',
+        protein = 'Chicken',
+        difficulty = 'Easy'
     )
     recipes.append(recipe5)
 
@@ -76,7 +96,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Salmon, teriyaki sauce, pineapple',
         directions = 'Marinate salmon in teriyaki sauce, top with pineapple slices, and grill until fish flakes easily.',
-        image_url = 'https://i0.wp.com/www.themountainkitchen.com/wp-content/uploads/2022/08/pineapple-plank-salmon.jpg'
+        image_url = 'https://i0.wp.com/www.themountainkitchen.com/wp-content/uploads/2022/08/pineapple-plank-salmon.jpg',
+        occasion = 'Backyard BBQ',
+        weather = 'Sunny',
+        protein = 'Fish',
+        difficulty = 'Hard'
     )
     recipes.append(recipe6)
 
@@ -85,7 +109,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Chicken, spicy mango barbecue sauce',
         directions = 'Thread chicken onto skewers, coat with spicy mango BBQ sauce, and grill until fully cooked.',
-        image_url = 'https://winealittlecookalot.com/wp-content/uploads/2020/08/mg_1862-1209x1920.jpg'
+        image_url = 'https://winealittlecookalot.com/wp-content/uploads/2020/08/mg_1862-1209x1920.jpg',
+        occasion = 'Casual Hang',
+        weather = 'Snowy',
+        protein = 'Chicken',
+        difficulty = 'Easy'
     )
     recipes.append(recipe7)
 
@@ -94,7 +122,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Beef brisket, mesquite seasoning',
         directions = 'Rub brisket with mesquite seasoning, smoke low and slow until a flavorful crust forms.',
-        image_url = 'https://cdn11.bigcommerce.com/s-bsut34lcyq/images/stencil/2048x2048/products/7405/2689/Classic-Mesquite-Smoked-Brisket_C9A8523__49978.1692998540.jpg?c=2'
+        image_url = 'https://cdn11.bigcommerce.com/s-bsut34lcyq/images/stencil/2048x2048/products/7405/2689/Classic-Mesquite-Smoked-Brisket_C9A8523__49978.1692998540.jpg?c=2',
+        occasion = 'Wedding',
+        weather = 'Rainy',
+        protein = 'Beef',
+        difficulty = 'Medium'
     )
     recipes.append(recipe8)
 
@@ -103,7 +135,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Corn, garlic, herbs, butter',
         directions = 'Rub corn with garlic, herbs, and butter. Grill until kernels are tender and slightly charred.',
-        image_url = 'https://3.bp.blogspot.com/-HawhR7ebQx0/UDzxutJ7kDI/AAAAAAAAEhs/qRVICXCkbng/s400/IMG_3981.jpg'
+        image_url = 'https://3.bp.blogspot.com/-HawhR7ebQx0/UDzxutJ7kDI/AAAAAAAAEhs/qRVICXCkbng/s400/IMG_3981.jpg',
+        occasion = 'Business',
+        weather = 'Windy',
+        protein = 'Vegetarian',
+        difficulty = 'Easy'
     )
     recipes.append(recipe9)
 
@@ -112,7 +148,11 @@ def create_recipes():
         category = 'Barbecue',
         ingredients = 'Mixed vegetables, barbecue sauce',
         directions = 'Skewer a variety of veggies, brush with barbecue sauce, and grill until vegetables are tender.',
-        image_url = 'https://www.acouplecooks.com/wp-content/uploads/2021/06/Vegetable-Kabobs-006.jpg'
+        image_url = 'https://www.acouplecooks.com/wp-content/uploads/2021/06/Vegetable-Kabobs-006.jpg',
+        occasion = 'Family Reunion',
+        weather = 'Cloudy',
+        protein = 'Vegetarian',
+        difficulty = 'Easy'
     )
     recipes.append(recipe10)
 
