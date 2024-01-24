@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Link } from "react-router-dom"
 
 function SignUp() {
-    const [users, setUsers] = useState([{}]);
-    const [refreshPage, setRefreshPage] = useState(false);
-  // Pass the useFormik() hook initial form values and a submit function that will
-  // be called when the form is submitted
-
-    useEffect(() => {
-        console.log("FETCH! ");
-        fetch("/users")
-        .then((res) => res.json())
-        .then((data) => {
-            setUsers(data);
-            console.log(data);
-        });
-    }, [refreshPage]);
 
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter email"),
@@ -32,18 +18,23 @@ function SignUp() {
         initialValues: {
         name: "",
         email: "",
+        password: ""
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-        fetch("users", {
+        fetch('/users', {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
             },
-            body: JSON.stringify(values, null, 2),
+            body: JSON.stringify(values),
         }).then((res) => {
-            if (res.status == 200) {
-            setRefreshPage(!refreshPage);
+            if (res.ok) {
+            res.json().then((user) => {
+                console.log('ok')
+            })
+            } else {
+                res.json().then((err) => console.log('error'))
             }
         });
         },
@@ -79,14 +70,14 @@ function SignUp() {
             id="password"
             name="password"
             onChange={formik.handleChange}
-            value={formik.values.age}
+            value={formik.values.password}
             />
             <p style={{ color: "red" }}> {formik.errors.password}</p>
             <button type="submit">
                 <Link className="link-to-swipe-page" to={`/swipes`}>Submit</Link>
             </button>
         </form>
-        <table style={{ padding: "15px" }}>
+        {/* <table style={{ padding: "15px" }}>
             <tbody>
             {users === "undefined" ? (
                 <p>Loading</p>
@@ -102,7 +93,7 @@ function SignUp() {
                 ))
             )}
             </tbody>
-        </table>
+        </table> */}
         </div>
     );
 };

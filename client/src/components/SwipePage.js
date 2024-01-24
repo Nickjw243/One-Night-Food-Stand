@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 // import Matches from "./Matches"
 // import Filters from "./Filters"
-import Recipes from "./Recipes";
+// import Recipes from "./Recipes";
+import NavBar from './NavBar'
 
 function SwipePage() {
     const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0)
@@ -19,32 +20,28 @@ function SwipePage() {
         setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
     }
 
-    function handleSwipeRight() {
+    const formOutline = {
+        name: "",
+        category: "",
+        ingredients: "", 
+        directions: "",
+        image_url: "",
+    }
+    function handleSwipeRight(e) {
+        e.preventDefault()
+        fetch('/recipes')
         setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
     }
 
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-
-    //     fetch("/swipes", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             username: currentUser.username,
-    //             body: body,
-    //         }),
-    //     })
-    //     .then((r) => r.json())
-    //     .then((newSwipe) => {
-    //         onAddSwipe(newSwipe);
-    //         setBody("");
-    //     })
-    // }
+    function addNewMatch(newMatch){
+        setRecipes([...recipes, newMatch])
+    }
 
     return (
         <div>
+            <header>
+                <NavBar />
+            </header>
             <h2>Swipe Recipes</h2>
             {recipes && recipes.length > 0 ? (
                 <div>

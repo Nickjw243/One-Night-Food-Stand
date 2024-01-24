@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
-import SwipePage from "./SwipePage"
+import React, { useState } from "react";
+// import { Switch, Route } from "react-router-dom";
+// import SwipePage from "./SwipePage"
 import { Link } from "react-router-dom"
 
 function App() {
@@ -47,6 +47,7 @@ function App() {
     <div className="App">
       <h1>One Night Food Stand</h1>
       <form onSubmit={handleSubmit}>
+      <h2>Email</h2>
       <input 
         type="text"
         name="email"
