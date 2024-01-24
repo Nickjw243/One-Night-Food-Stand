@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import Filters from "./Filters";
 
 
+
 function SwipePage({loggedIn}) {
   // --------- USER ID STATE MGMT ---------//
     console.log(loggedIn)
@@ -18,7 +19,7 @@ function SwipePage({loggedIn}) {
 // --------- USER ID STATE MGMT ---------//
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [recipes, setRecipes] = useState([]);
-  const curr_date = 40
+
 
   useEffect(() => {
     // Fetch recipes from the server
@@ -40,15 +41,13 @@ function SwipePage({loggedIn}) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      swipe: 'swiping left',
+      swipe: 0,
       user_id: userID,
-      recipe_id: 1,
-      swipe_date: curr_date
+      recipe_id: currentRecipeIndex+1
     })
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data)
     setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
   })
   }
@@ -63,26 +62,22 @@ function SwipePage({loggedIn}) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      swipe: 'swiping right',
+      swipe: 1,
       user_id: userID,
-      recipe_id: 1,
-      swipe_date: curr_date
+      recipe_id: currentRecipeIndex +1
     })
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data)
     setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
   })
   }
 
   function handleFiltersNav() {
-    console.log(userID)
     navigate("/filters", { state: { loggedIn: userID } });
   }
 
   function handleMatchesNav() {
-    console.log(userID)
     navigate("/matches", { state: { loggedIn: userID } });
   }
 
