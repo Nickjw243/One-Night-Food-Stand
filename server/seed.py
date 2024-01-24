@@ -4,13 +4,10 @@
 from random import randint, choice as rc
 
 # Remote library imports
-from faker import Faker
 
 # Local imports
 from app import app
 from models import db, Users, Recipes, Swipes
-
-fake = Faker()
 
 def create_username():
     usernames = []
@@ -180,6 +177,11 @@ def create_swipes(usernames, recipes):
 
 if __name__ == '__main__':
     with app.app_context():
+        # print("Deleting data")
+        # Users.query.delete()
+        # Recipes.query.delete()
+        # Swipes.query.delete()
+
         print("Clearing db...")
         Users.query.delete()
         Recipes.query.delete()

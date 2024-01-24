@@ -195,6 +195,21 @@ def users():
         )
     return response
 
+@app.route('/swipes/<int:user>', methods = ['GET'])
+def swipes_by_user(user):
+
+    matches = Swipes.query.filter(Swipes.user_id == user).all()
+
+    matches_dict = [match.to_dict() for match in matches]
+
+    response = make_response(
+        matches_dict,
+        200
+    )
+    return response
+
+
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
 

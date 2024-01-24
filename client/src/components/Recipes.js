@@ -1,18 +1,18 @@
-import { useState} from "react";
-import NavBar from "./NavBar";
+import React from "react";
+import RecipeCard from "./RecipeCard";
 // import SwipePage from "./SwipePage";
 
-function Recipes() {
-    const [recipe, setRecipe] = useState({})
+function Recipes({ matches }) {
+    
+    // const filteredMatches = matches.filter((match => {
+    //     return match.name}))
     
 
     return (
-        <div>
-            <header>
-                <NavBar />
-            </header>
-            <h1>Recipes</h1>
-        </div>
+        <ul className="recipe-list" >
+            {matches.map((match) => {
+            return <RecipeCard key={match.id} match={match}/>})}
+        </ul>
     )
 }
 

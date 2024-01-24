@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Recipes from "./Recipes"
 import { useLocation } from "react-router-dom"
 import { Link, useNavigate } from "react-router-dom";
@@ -8,13 +8,28 @@ function Matches() {
     let location = useLocation()
     let userID = location.state.loggedIn
     const navigate = useNavigate();
+    const [matches, setMatches] = useState([])
     console.log(userID)
+
+
+    useEffect(() => {
+        fetchMatches()
+    }, [])
+
+    function fetchMatches() {
+    fetch('/swipes/' + userID)
+    .then(r => r.json())
+    .then(data => {
+        setMatches(data)
+        console.log(data)
+    })
+}
 
     return (
         <div>
             <h1>Matches</h1>
             <ul className="matches" >
-                <Recipes />
+                <Recipes key={matches.id} matches = {matches}/>
             </ul>
         </div>
     )
