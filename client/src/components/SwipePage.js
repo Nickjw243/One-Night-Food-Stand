@@ -9,8 +9,16 @@ function SwipePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const filters = {
+        occasion: ['Backyard BBQ', 'Casual Hang', 'Wedding', 'Formal', 'Business', 'Family Reunion', 'Holiday', 'Friend Gathering'],
+        weather: ['Sunny', 'Snowy', 'Rainy', 'Hot', 'Windy', 'Cloudy'],
+        protein: ['Chicken', 'Beef', 'Pork', 'Lamb', 'Shrimp', 'Fish', 'Vegetarian'],
+        difficulty: ['Easy', 'Medium', 'Hard']
+    }
+
+    const queryParams = new URLSearchParams(filters).toString()
     // Fetch recipes from the server
-    fetch('/recipes')
+    fetch('/recipes?${queryParams}')
       .then((res) => res.json())
       .then((data) => setRecipes(data))
       .catch((error) => console.error('Error fetching recipes:', error));
