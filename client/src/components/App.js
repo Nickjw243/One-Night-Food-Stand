@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
-import SwipePage from "./SwipePage"
+import { Routes, Route } from 'react-router-dom';
+import SwipePage from "./SwipePage";
+import Filters from './Filters';
+import Matches from './Matches';
+import Recipes from './Recipes';
 import { Link } from "react-router-dom"
 
 function App() {
@@ -45,6 +48,12 @@ function App() {
 
   return (
     <div className="App">
+      <Routes>
+        <Route path="/" element={<SwipePage />} />
+        <Route path="/filters" element={<Filters />} />
+        <Route path="/matches" element={<Matches />} />
+        <Route path="/recipes" element={<Recipes />} />
+      </Routes>
       <h1>One Night Food Stand</h1>
       <form onSubmit={handleSubmit}>
       <input 
