@@ -14,13 +14,12 @@ fake = Faker()
 
 def create_username():
     usernames = []
-    for _ in range(5):
-        u = Users(
-            username = fake.name(),
-            user_email = fake.first_name(),
-            passwordhash = fake.first_name()
-        )
-        usernames.append(u)
+    u = Users(
+        username = 'Hank',
+        user_email = 'hank@form.net',
+        passwordhash = 'just'
+    )
+    usernames.append(u)
     return usernames
 
 def create_recipes():
