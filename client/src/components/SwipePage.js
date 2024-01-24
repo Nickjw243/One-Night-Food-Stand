@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Recipes from "./Recipes";
+import Filters from "./Filters";
 
 function SwipePage() {
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
@@ -20,6 +21,7 @@ function SwipePage() {
   return (
     <div>
       <h2>Swipe Recipes</h2>
+      <Filters />
       {isLoading ? (
         <p>Loading recipes...</p>
       ) : (
