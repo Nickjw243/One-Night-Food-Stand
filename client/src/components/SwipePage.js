@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import Filters from "./Filters"
 // import Recipes from "./Recipes";
 import NavBar from './NavBar'
+import Matches from "./Matches";
 
 function SwipePage() {
     const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0)
