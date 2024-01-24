@@ -9,27 +9,18 @@ function SwipePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const filters = {
-        occasion: ['Backyard BBQ', 'Casual Hang', 'Wedding', 'Formal', 'Business', 'Family Reunion', 'Holiday', 'Friend Gathering'],
-        weather: ['Sunny', 'Snowy', 'Rainy', 'Hot', 'Windy', 'Cloudy'],
-        protein: ['Chicken', 'Beef', 'Pork', 'Lamb', 'Shrimp', 'Fish', 'Vegetarian'],
-        difficulty: ['Easy', 'Medium', 'Hard']
-    }
-
-    const queryParams = new URLSearchParams(filters).toString()
     // Fetch recipes from the server
-    fetch('/recipes?${queryParams}')
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((error) => console.error('Error fetching recipes:', error));
-  }, []);
+    fetch('/recipes')
+    .then((res) => res.json())
+    .then((data) => setRecipes(data))
+    .catch((error) => console.error('Error fetching recipes:', error));
+}, []);
 
   const isLoading = !Array.isArray(recipes) || recipes.length === 0;
 
   return (
     <div>
       <h2>Swipe Recipes</h2>
-      <Filters />
       {isLoading ? (
         <p>Loading recipes...</p>
       ) : (
@@ -63,5 +54,4 @@ function SwipePage() {
 }
 
 export default SwipePage;
-
 

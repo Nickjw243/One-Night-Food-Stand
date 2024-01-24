@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function Filters() {
-    const [selectedOccasion, setSelectedOccasion] = useState('')
-    const [selectedWeather, setSelectedWeather] = useState('')
-    const [selectedProtein, setSelectedProtein] = useState('')
-    const [selectedDifficulty, setSelectedDifficulty] = useState('')
+function Filters({ setRecipes }) {
+  const [selectedOccasion, setSelectedOccasion] = useState('');
+  const [selectedWeather, setSelectedWeather] = useState('');
+  const [selectedProtein, setSelectedProtein] = useState('');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('');
+  const navigate = useNavigate();
+
+  const handleFilterChange = () => {
+
+    console.log(selectedOccasion)
+
+    fetch(`/recipes/${selectedOccasion}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the state with the new recipes if setRecipes is provided
+        if (data) {
+          //setRecipes(data);
+          console.log(data)
+          console.log(selectedOccasion)
+        }
+        //navigate('/swipes');
+      })
+      .catch((error) => {
+        console.error('Error fetching filtered recipes:', error);
+      });
+  };
 
     return (
         <div>
@@ -14,14 +36,14 @@ function Filters() {
                 <select
                     value = {selectedOccasion}
                     onChange={(e) => setSelectedOccasion(e.target.value)}>
-                    <option value = 'Backyard BBQ'>Backyard BBQ</option>
-                    <option value = 'Casual Hang'>Casual Hang</option>
+                    <option value = 'Backyard_BBQ'>Backyard BBQ</option>
+                    <option value = 'Casual_Hang'>Casual Hang</option>
                     <option value = 'Wedding'>Wedding</option>
                     <option value = "Formal">Formal</option>
                     <option value = 'Business'>Business</option>
-                    <option value = 'Family Reunion'>Family Reunion</option>
+                    <option value = 'Family_Reunion'>Family Reunion</option>
                     <option value = 'Holiday'>Holiday</option>
-                    <option value = 'Friend Gathering'>Friend Gathering</option>
+                    <option value = 'Friend_Gathering'>Friend Gathering</option>
                 </select>
             </label>
             <label>
