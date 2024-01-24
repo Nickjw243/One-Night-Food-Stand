@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import SwipePage from "./SwipePage";
 import Filters from './Filters';
 import Matches from './Matches';
@@ -56,12 +56,12 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<SwipePage />} />
         <Route path="/filters" element={<Filters />} />
         <Route path="/matches" element={<Matches />} />
         <Route path="/recipes" element={<Recipes />} />
-      </Routes>
+      </Routes> */}
       <h1>One Night Food Stand</h1>
       <form onSubmit={handleSubmit}>
         <input 
