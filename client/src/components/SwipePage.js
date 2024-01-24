@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import Recipes from "./Recipes";
-import NavBar from './NavBar'
 import Matches from "./Matches";
 import App from "./App"
 import { useLocation } from "react-router-dom";
@@ -9,15 +8,16 @@ import Filters from "./Filters";
 
 
 function SwipePage({loggedIn}) {
+  // --------- USER ID STATE MGMT ---------//
     console.log(loggedIn)
     let location = useLocation()
     let userID = location.state.loggedIn
+    const navigate = useNavigate();
 
     console.log(userID)
-
+// --------- USER ID STATE MGMT ---------//
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [recipes, setRecipes] = useState([]);
-  const navigate = useNavigate();
   const curr_date = 40
 
   useEffect(() => {
@@ -76,6 +76,16 @@ function SwipePage({loggedIn}) {
   })
   }
 
+  function handleFiltersNav() {
+    console.log(userID)
+    navigate("/filters", { state: { loggedIn: userID } });
+  }
+
+  function handleMatchesNav() {
+    console.log(userID)
+    navigate("/matches", { state: { loggedIn: userID } });
+  }
+
   return (
     <div>
       <h2>Swipe Recipes</h2>
@@ -98,10 +108,10 @@ function SwipePage({loggedIn}) {
             <button onClick={handleSwipeRight}>
               Swipe Right
             </button>
-            <button onClick={() => navigate('/filters')}>
+            <button onClick={handleFiltersNav}>
               Go to Filters
             </button>
-            <button onClick={() => navigate('/matches')}>
+            <button onClick={handleMatchesNav}>
               Go to Matches
             </button>
           </div>

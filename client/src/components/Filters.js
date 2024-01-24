@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import NavBar from "./NavBar";
+import { useLocation } from "react-router-dom"
+
 
 function Filters({ setRecipes }) {
-  const [selectedOccasion, setSelectedOccasion] = useState('');
-  const [selectedWeather, setSelectedWeather] = useState('');
-  const [selectedProtein, setSelectedProtein] = useState('');
-  const [selectedDifficulty, setSelectedDifficulty] = useState('');
-  const navigate = useNavigate();
-
-  const handleFilterChange = () => {
-
-    console.log(selectedOccasion)
-
-    fetch(`/recipes/${selectedOccasion}`)
-      .then((response) => response.json())
+    let location = useLocation()
+    let userID = location.state.loggedIn
+    const navigate = useNavigate();
+    console.log(userID)
+    
+    const [selectedOccasion, setSelectedOccasion] = useState('');
+    const [selectedWeather, setSelectedWeather] = useState('');
+    const [selectedProtein, setSelectedProtein] = useState('');
+    const [selectedDifficulty, setSelectedDifficulty] = useState('');
+    
+    const handleFilterChange = () => {
+        
+        console.log(selectedOccasion)
+        
+        fetch(`/recipes/${selectedOccasion}`)
+        .then((response) => response.json())
       .then((data) => {
         // Update the state with the new recipes if setRecipes is provided
         if (data) {
