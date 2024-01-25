@@ -91,19 +91,61 @@ def get_recipes_for_swipes(userID):
     return response
 ##__________TESTING REC BY USERID__________##
 
-@app.route('/recipes/<string:occasion>', methods = ['GET'])
-def recipes_occasion(occasion):
+# @app.route('/recipes/<string:occasion>', methods = ['GET'])
+# def recipes_occasion(occasion):
 
-    recipes = Recipes.query.filter(Recipes.occasion == occasion).all()
+#     recipes = Recipes.query.filter(Recipes.occasion == occasion).all()
 
-    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+#     recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
 
-    response = make_response(
-        recipes_dict,
-        200
-    )
+#     response = make_response(
+#         recipes_dict,
+#         200
+#     )
 
-    return response
+#     return response
+
+# @app.route('/recipes/<string:weather>', methods = ['GET'])
+# def recipes_weather(weather):
+
+#     recipes = Recipes.query.filter(Recipes.weather == weather).all()
+
+#     recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+#     response = make_response(
+#         recipes_dict,
+#         200
+#     )
+
+#     return response
+
+# @app.route('/recipes/<string:protein>', methods = ['GET'])
+# def recipes_protein(protein):
+
+#     recipes = Recipes.query.filter(Recipes.protein == protein).all()
+
+#     recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+#     response = make_response(
+#         recipes_dict,
+#         200
+#     )
+
+#     return response
+
+# @app.route('/recipes/<string:difficulty>', methods = ['GET'])
+# def recipes_difficulty(difficulty):
+
+#     recipes = Recipes.query.filter(Recipes.difficulty == difficulty).all()
+
+#     recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+#     response = make_response(
+#         recipes_dict,
+#         200
+#     )
+
+#     return response
 
 @app.route('/swipes/<int:id>', methods = ['PATCH'])
 def swipe_by_id(id):
@@ -224,6 +266,35 @@ def swipes_by_user(user):
         200
     )
     return response
+
+@app.route('/recipes/filter', methods = ['GET'])
+def recipes_filter():
+    filters = {}
+    if 'occasion' in request.args:
+        filters['occasion'] = request.args['occasion']
+    if 'weather' in request.args:
+        filters['weather'] = request.args['weather']
+    if 'protein' in request.args:
+        filters['protein'] = request.args['protein']
+    if 'difficulty' in request.args:
+        filters['difficulty'] = request.args['difficulty']
+
+    recipes = Recipes.query.filter_by(**filters).all()
+
+    recipes_dict = [recipe.to_dict(rules=('swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
+
+# @app.route('/recipes/')
+# def search():
+#     query = request.args.getlist('name')
+#     print(query)
+#     return f'Searching for: {query}'
 
 
 
