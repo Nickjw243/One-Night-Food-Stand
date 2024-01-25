@@ -8,6 +8,10 @@ function Filters({ setRecipes }) {
     let userID = location.state.loggedIn
     const navigate = useNavigate();
     console.log(userID)
+
+    function handleSwipePagesNav() {
+        navigate("/swipes", { state: { loggedIn: userID } });
+      }
     
     const [selectedOccasion, setSelectedOccasion] = useState('');
     const [selectedWeather, setSelectedWeather] = useState('');
@@ -90,6 +94,7 @@ function Filters({ setRecipes }) {
                 </select>
             </label>
             <button onClick={handleFilterChange}>Apply Filters</button>
+            <button onClick={handleSwipePagesNav}>Go Back to Swiping!</button>
         </div>
     )
 }
