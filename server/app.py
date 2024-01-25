@@ -65,7 +65,7 @@ def recipes():
 
     recipes = Recipes.query.filter().all()
 
-    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+    recipes_dict = [recipe.to_dict() for recipe in recipes]
 
     response = make_response(
         recipes_dict,
@@ -73,6 +73,23 @@ def recipes():
     )
 
     return response
+
+##__________TESTING REC BY USERID__________##
+@app.route('/hello/<int:userID>', methods=['GET'])
+def get_recipes_for_swipes(userID):
+    swipeable_recipes = []
+    all_recipes = Recipes.query.all()
+    for recipe in all_recipes:
+        has_swiped = any(swipe.user_id == userID for swipe in recipe.swipes)
+        if not has_swiped:
+            swipeable_recipes.append(recipe.to_dict(rules=('-swipes','-users',)))
+    
+    response = make_response(
+        swipeable_recipes,
+        200
+    )
+    return response
+##__________TESTING REC BY USERID__________##
 
 @app.route('/recipes/<string:occasion>', methods = ['GET'])
 def recipes_occasion(occasion):
