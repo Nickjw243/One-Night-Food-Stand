@@ -11,19 +11,28 @@ from models import db, Users, Recipes, Swipes
 
 def create_username():
     usernames = []
-    u = Users(
-        username = 'Hank',
-        user_email = 'hank@form.net',
-        passwordhash = 'just'
+    emails = ['tyler@form.net','statz@form.net','nick@form.net']
+            
+    user1 = Users(
+        username = 'Statz',
+        user_email = 'statz@form.net',
+        passwordhash = '123'
     )
-    usernames.append(u)
+    usernames.append(user1)
 
-    uu = Users(
-    username = 'tim',
-    user_email = 'tim@form.net',
-    passwordhash = 'just'
+    user2 = Users(
+        username = 'Nick',
+        user_email = 'nick@form.net',
+        passwordhash = '123'
     )
-    usernames.append(uu)
+    usernames.append(user2)
+
+    user3 = Users(
+        username = 'Tyler',
+        user_email = 'tyler@form.net',
+        passwordhash = '123'
+    )
+    usernames.append(user3)
 
     return usernames
 
