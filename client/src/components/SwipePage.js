@@ -20,12 +20,18 @@ function SwipePage({loggedIn}) {
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [recipes, setRecipes] = useState([]);
 
-
+  let random_array=[]
+  function appendToArray(i){
+    random_array.push(i)
+  }
   useEffect(() => {
     // Fetch recipes from the server
-    fetch('/recipes')
+    fetch(`/hello/${userID}`)
     .then((res) => res.json())
-    .then((data) => setRecipes(data))
+    .then((data) => {
+      setRecipes(data)
+      console.log(data)
+    })
     .catch((error) => console.error('Error fetching recipes:', error));
 }, []);
 
