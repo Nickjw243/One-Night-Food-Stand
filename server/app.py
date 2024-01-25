@@ -198,7 +198,7 @@ def users():
 @app.route('/swipes/<int:user>', methods = ['GET'])
 def swipes_by_user(user):
 
-    matches = Swipes.query.filter(Swipes.user_id == user).all()
+    matches = Swipes.query.filter(db.and_(Swipes.user_id == user, Swipes.swipe == 1)).all()
 
     matches_dict = [match.to_dict() for match in matches]
 
