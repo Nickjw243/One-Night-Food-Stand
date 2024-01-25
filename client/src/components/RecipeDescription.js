@@ -22,13 +22,13 @@ function RecipeDescription() {
     return (
         <div className="Recipe-Description">
             <ul>
+                <h4 className="recipe-title">{recipe.name}</h4>
                 <img
                 className = "recipe-image"
                 src={recipe.image_url}
                 alt={recipe.name}
                 ></img>
-                <h4>{recipe.name}</h4>
-                <li>{recipe.ingredients}</li>
+                <ul>{recipe.ingredients}</ul>
                 <p>{recipe.directions}</p>
             </ul>
         </div>

@@ -91,20 +91,20 @@ function SwipePage({loggedIn}) {
   }
   
   return (
-    <div>
-      <h2>Swipe Recipes</h2>
+    <div className="recipe-swipe-div">
+      <h2 className="swipe-recipes-text">Swipe Recipes</h2>
       {isLoading ? (
         <p>Loading recipes...</p>
       ) : (
         <div>
           {recipes.length > 0 && currentRecipe && (
             <div>
-                <img
+                <img className="recipe-swipe-image"
                   src={currentRecipe.image_url || ''}
                   alt="Recipe"
                   style={{ width: '300px', height: '200px'}}
                 />
-                <h3>{currentRecipe.name || ''}</h3>
+                <h3 className="swipe-current-recipe-text">{currentRecipe.name || ''}</h3>
               </div>
           )}
           <div>
