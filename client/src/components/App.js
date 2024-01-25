@@ -104,7 +104,7 @@ function App() {
         <Route path="/matches" element={<Matches />} />
         <Route path="/recipes" element={<Recipes />} />
       </Routes> */}
-      <h1>One Night Food Stand</h1>
+      <h1 className="login-title">One Night Food Stand</h1>
       <form onSubmit={formik.handleSubmit}>
         <input 
           type="text"
@@ -128,9 +128,10 @@ function App() {
         <p>{formik.touched.password && formik.errors.password ? (
                 <h3>{formik.errors.password}</h3>
             ) : ('')}</p>
-        <button className="login_button" type="submit">Log In</button>
+        <button class="btn btn-danger" className="login_button" type="submit">Log In</button>
+
       </form>
-      <button>
+      <button class="btn btn-outline-danger">
         <Link className="link" to={`/signup`}>Sign Up Here</Link>
       </button>
     </div>
