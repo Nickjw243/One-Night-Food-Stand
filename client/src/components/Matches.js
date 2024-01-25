@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Recipes from "./Recipes"
 import { useLocation } from "react-router-dom"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Matches() {

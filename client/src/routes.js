@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp"
 import Matches from "./components/Matches"
 import Recipes from "./components/Recipes"
 import SwipePage from "./components/SwipePage"
+import RecipeDescription from "./components/RecipeDescription"
 
 
 const routes = [
@@ -30,6 +31,10 @@ const routes = [
     {
         path: "/recipes",
         element: <Recipes />
+    },
+    {
+        path: "/matches/:id",
+        element: <RecipeDescription />
     }
 ]
 
