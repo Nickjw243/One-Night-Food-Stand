@@ -21,9 +21,6 @@ function RecipeDescription() {
 
     return (
         <div className="Recipe-Description">
-            <button>
-                <Link className="link-to-matches" to={`/matches`}>Back to Matches</Link>
-            </button>
             <ul>
                 <img
                 className = "recipe-image"

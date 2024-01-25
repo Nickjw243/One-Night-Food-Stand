@@ -25,8 +25,13 @@ function Matches() {
     })
 }
 
+function handleSwipesNav() {
+    navigate("/swipes", { state: { loggedIn: userID } });
+  }
+
     return (
         <div>
+            <button onClick={handleSwipesNav}>Go to Swipes</button>
             <h1>Matches</h1>
             <ul className="matches" >
                 <Recipes key={matches.id} matches = {matches}/>
