@@ -105,6 +105,48 @@ def recipes_occasion(occasion):
 
     return response
 
+@app.route('/recipes/<string:weather>', methods = ['GET'])
+def recipes_weather(weather):
+
+    recipes = Recipes.query.filter(Recipes.weather == weather).all()
+
+    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
+
+@app.route('/recipes/<string:protein>', methods = ['GET'])
+def recipes_protein(protein):
+
+    recipes = Recipes.query.filter(Recipes.protein == protein).all()
+
+    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
+
+@app.route('/recipes/<string:difficulty>', methods = ['GET'])
+def recipes_difficulty(difficulty):
+
+    recipes = Recipes.query.filter(Recipes.difficulty == difficulty).all()
+
+    recipes_dict = [recipe.to_dict(rules = ('-swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
+
 @app.route('/swipes/<int:id>', methods = ['PATCH'])
 def swipe_by_id(id):
     swipe = Swipes.query.filter(Swipes.id == id).first()
