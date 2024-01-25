@@ -267,6 +267,36 @@ def swipes_by_user(user):
     )
     return response
 
+@app.route('/recipes/filter', methods = ['GET'])
+def recipes_filter():
+    occasion = request.args.get('occasion')
+    weather = request.args.get('weather')
+    protein = request.args.get('protein')
+    difficulty = request.args.get('difficulty')
+
+    filters = {}
+    if occasion:
+        filters['occasion'] = occasion
+    
+    if weather:
+        filters['weather'] = weather
+
+    if protein:
+        filters['protein'] = protein
+    
+    if difficulty:
+        filters['difficulty'] = difficulty
+    
+    recipes = Recipes.query.filter_by(**filters).all()
+
+    recipes_dict = [recipe.to_dict(rules=('swipes', )) for recipe in recipes]
+
+    response = make_response(
+        recipes_dict,
+        200
+    )
+
+    return response
 
 
 if __name__ == '__main__':
