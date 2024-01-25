@@ -91,8 +91,8 @@ def get_recipes_for_swipes(userID):
     return response
 ##__________TESTING REC BY USERID__________##
 
-@app.route('/recipes/<string:occasion>', methods = ['GET'])
-def recipes_occasion(occasion):
+# @app.route('/recipes/<string:occasion>', methods = ['GET'])
+# def recipes_occasion(occasion):
 
 #     recipes = Recipes.query.filter(Recipes.occasion == occasion).all()
 

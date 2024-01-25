@@ -1,8 +1,8 @@
-"""removed date column from swipes
+"""empty message
 
-Revision ID: 3bd0031c0f7b
+Revision ID: d7551d8f06f4
 Revises: 
-Create Date: 2024-01-24 15:46:59.814869
+Create Date: 2024-01-25 14:16:33.204935
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3bd0031c0f7b'
+revision = 'd7551d8f06f4'
 down_revision = None
 branch_labels = None
 depends_on = None
