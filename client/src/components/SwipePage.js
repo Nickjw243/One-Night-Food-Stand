@@ -17,23 +17,23 @@ function SwipePage({loggedIn}) {
 
     console.log(userID)
 // --------- USER ID STATE MGMT ---------//
-  const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
+  const [currentRecipeId, setCurrentRecipeId] = useState(null);
   const [recipes, setRecipes] = useState([]);
+  const currentRecipe = recipes.find(r => r.id === currentRecipeId)
 
-  let random_array=[]
-  function appendToArray(i){
-    random_array.push(i)
-  }
   useEffect(() => {
     // Fetch recipes from the server
     fetch(`/hello/${userID}`)
     .then((res) => res.json())
     .then((data) => {
       setRecipes(data)
+      if (data.length > 0) {
+        setCurrentRecipeId(data[0].id)
+      }
       console.log(data)
     })
     .catch((error) => console.error('Error fetching recipes:', error));
-}, []);
+}, [userID]);
 
   const isLoading = !Array.isArray(recipes) || recipes.length === 0;
 
@@ -49,18 +49,19 @@ function SwipePage({loggedIn}) {
     body: JSON.stringify({
       swipe: 0,
       user_id: userID,
-      recipe_id: currentRecipeIndex+1
+      recipe_id: currentRecipeId
     })
   })
   .then(response => response.json())
   .then(data => {
-    setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
+    // setCurrentRecipeId((prevIndex) => (prevIndex + 1) % recipes.length)
+    setCurrentRecipeId(recipes[(recipes.findIndex(r => r.id === currentRecipeId) + 1) % recipes.length].id);
   })
   }
 
   function handleSwipeRight(e) {
     e.preventDefault()
-
+    console.log(`Requesting: ${currentRecipeId}`)
     //post for the dislike
     fetch('/swipes',{
     method: 'POST',
@@ -70,13 +71,15 @@ function SwipePage({loggedIn}) {
     body: JSON.stringify({
       swipe: 1,
       user_id: userID,
-      recipe_id: currentRecipeIndex +1
+      recipe_id: currentRecipeId
     })
-  })
-  .then(response => response.json())
-  .then(data => {
-    setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length)
-  })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // setCurrentRecipeId((prevIndex) => (prevIndex + 1) % recipes.length)
+      setCurrentRecipeId(recipes[(recipes.findIndex(r => r.id === currentRecipeId) + 1) % recipes.length].id);
+      console.log(`Response: ${data.recipe_id}`)
+    })
   }
 
   function handleFiltersNav() {
@@ -86,7 +89,7 @@ function SwipePage({loggedIn}) {
   function handleMatchesNav() {
     navigate("/matches", { state: { loggedIn: userID } });
   }
-
+  
   return (
     <div>
       <h2>Swipe Recipes</h2>
@@ -94,14 +97,16 @@ function SwipePage({loggedIn}) {
         <p>Loading recipes...</p>
       ) : (
         <div>
-          <div>
-            <img
-              src={recipes[currentRecipeIndex]?.image_url || ''}
-              alt="Recipe"
-              style={{ width: '300px', height: '200px' }}
-            />
-            <h3>{recipes[currentRecipeIndex]?.name || ''}</h3>
-          </div>
+          {recipes.length > 0 && currentRecipe && (
+            <div>
+                <img
+                  src={currentRecipe.image_url || ''}
+                  alt="Recipe"
+                  style={{ width: '300px', height: '200px'}}
+                />
+                <h3>{currentRecipe.name || ''}</h3>
+              </div>
+          )}
           <div>
             <button onClick={handleSwipeLeft}>
               Swipe Left
