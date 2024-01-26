@@ -105,6 +105,7 @@ function App() {
         <Route path="/recipes" element={<Recipes />} />
       </Routes> */}
       <h1 className="login-title">One Night Food Stand</h1>
+      <h1 className="login-title">The BBQ matching website!</h1>
       <form onSubmit={formik.handleSubmit}>
         <input 
           type="text"
