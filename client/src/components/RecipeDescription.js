@@ -29,6 +29,7 @@ function RecipeDescription() {
                 alt={recipe.name}
                 ></img>
                 <ul>{recipe.ingredients}</ul>
+                <br />
                 <p>{recipe.directions}</p>
             </ul>
         </div>

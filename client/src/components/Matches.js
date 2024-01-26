@@ -32,7 +32,7 @@ function handleSwipesNav() {
     return (
         <div>
             <button onClick={handleSwipesNav}>Go to Swipes</button>
-            <h1>Matches</h1>
+            <h1 className= 'matches-title'>Matches</h1>
             <ul className="matches" >
                 <Recipes key={matches.id} matches = {matches}/>
             </ul>

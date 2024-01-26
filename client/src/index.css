@@ -95,3 +95,9 @@ body {
 .swipe-current-recipe-text{
   text-align: center;
 }
+
+.matches-title {
+  text-align: center;
+  color: #f76855;
+  margin-top: 30px;
+}
