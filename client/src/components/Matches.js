@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Recipes from "./Recipes"
 import { useLocation } from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function Matches() {
@@ -31,6 +32,9 @@ function handleSwipesNav() {
 
     return (
         <div>
+            <button>
+                <Link className ="link-to-log-out" to={'/'} >Log Out</Link>
+            </button>
             <button onClick={handleSwipesNav}>Go to Swipes</button>
             <h1 className= 'matches-title'>Matches</h1>
             <ul className="matches" >

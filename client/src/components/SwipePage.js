@@ -92,6 +92,11 @@ function SwipePage({loggedIn}) {
   
   return (
     <div className="recipe-swipe-div">
+      <header>
+        <button>
+          <Link className ="link-to-log-out" to={'/'} >Log Out</Link>
+        </button>
+      </header>
       <h2 className="swipe-recipes-text">Swipe Recipes</h2>
       {isLoading ? (
         <p>Loading recipes...</p>
